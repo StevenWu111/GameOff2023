@@ -34,7 +34,7 @@ void AGiantBuddha::DetectorOverlapBegin(UPrimitiveComponent* OverlappedComponent
 	if (AGameOffCharacter* Player = Cast<AGameOffCharacter>(OtherActor))
 	{
 		MainPlayer = Player;
-		CurrStatus = Tracking;
+		//CurrStatus = Tracking;
 		LightComponent->SetIntensity(LightChangeIntensity);
 	}else if (!TargetActors.IsEmpty() && OtherActor == TargetActors[CurrIndex] && CurrStatus == Searching)
 	{

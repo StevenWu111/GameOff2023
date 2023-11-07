@@ -38,6 +38,9 @@ AGameOffCharacter::AGameOffCharacter()
 	//Mesh1P->SetRelativeRotation(FRotator(0.9f, -19.19f, 5.2f));
 	Mesh1P->SetRelativeLocation(FVector(-30.f, 0.f, -150.f));
 
+	LightComponent = CreateDefaultSubobject<USpotLightComponent>(TEXT("LightComponent"));
+	LightComponent->SetupAttachment(this->GetFirstPersonCameraComponent());
+
 }
 
 void AGameOffCharacter::BeginPlay()
@@ -72,6 +75,9 @@ void AGameOffCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AGameOffCharacter::Look);
+
+		// Toggle the flash light
+		EnhancedInputComponent->BindAction(FlashLightAction, ETriggerEvent::Started, this, &AGameOffCharacter::ToggleFlashLight);
 	}
 	else
 	{
@@ -80,6 +86,9 @@ void AGameOffCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 }
 
 
+/*
+ * The functions that will be called when player input something
+ */
 void AGameOffCharacter::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
@@ -105,6 +114,21 @@ void AGameOffCharacter::Look(const FInputActionValue& Value)
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
 }
+
+void AGameOffCharacter::ToggleFlashLight(const FInputActionValue& Value)
+{
+	if (bIsFlashLightOpen)
+	{
+		LightComponent->SetVisibility(false);
+	}
+	else
+	{
+		LightComponent->SetVisibility(true);
+	}
+	bIsFlashLightOpen = !bIsFlashLightOpen;
+}
+
+
 
 void AGameOffCharacter::SetHasRifle(bool bNewHasRifle)
 {

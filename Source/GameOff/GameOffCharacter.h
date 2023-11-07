@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+#include "Components/SpotLightComponent.h"
 #include "GameOffCharacter.generated.h"
 
 class UInputComponent;
@@ -40,7 +41,12 @@ class AGameOffCharacter : public ACharacter
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
-	
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* FlashLightAction;
+
+	UPROPERTY(EditAnywhere)
+	USpotLightComponent* LightComponent;
 public:
 	AGameOffCharacter();
 
@@ -65,12 +71,16 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Weapon)
 	bool GetHasRifle();
 
+	bool bIsFlashLightOpen = true;
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
+
+	void ToggleFlashLight(const FInputActionValue& Value);
 
 protected:
 	// APawn interface
@@ -84,4 +94,3 @@ public:
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
 };
-
