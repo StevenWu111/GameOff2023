@@ -45,13 +45,25 @@ class AGameOffCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* FlashLightAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* CrouchAction;
+
 	UPROPERTY(EditAnywhere)
 	USpotLightComponent* LightComponent;
+	
 public:
 	AGameOffCharacter();
 
+	void OnStartCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust) override;
+
+	void OnEndCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust) override;
+
+	void CalcCamera(float DeltaTime, FMinimalViewInfo& OutResult) override;
+
 protected:
 	virtual void BeginPlay();
+
+	virtual void Tick(float DeltaSeconds) override;
 
 public:
 		
@@ -71,7 +83,20 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Weapon)
 	bool GetHasRifle();
 
+	/*Control the flash light*/
 	bool bIsFlashLightOpen = true;
+
+	/*Is crouch or not*/
+	bool bIsCrouch = false;
+
+	/*Is hiding or not*/
+	bool bIsHiding = false;
+
+	UPROPERTY(EditAnywhere)
+	FVector CrouchEyeOffset;
+
+	UPROPERTY(EditAnywhere)
+	float CrouchSpeed;
 
 protected:
 	/** Called for movement input */
@@ -81,6 +106,8 @@ protected:
 	void Look(const FInputActionValue& Value);
 
 	void ToggleFlashLight(const FInputActionValue& Value);
+
+	void CrouchFunction(const FInputActionValue& Value);
 
 protected:
 	// APawn interface

@@ -41,6 +41,40 @@ AGameOffCharacter::AGameOffCharacter()
 	LightComponent = CreateDefaultSubobject<USpotLightComponent>(TEXT("LightComponent"));
 	LightComponent->SetupAttachment(this->GetFirstPersonCameraComponent());
 
+	CrouchEyeOffset = FVector(0.0f);
+	CrouchSpeed = 12.0f;
+
+}
+
+void AGameOffCharacter::OnStartCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust)
+{
+	if (HalfHeightAdjust == 0.0f)
+	{
+		return;
+	}
+	
+	const float StartBaseEyeHeight = BaseEyeHeight;
+	Super::OnStartCrouch(HalfHeightAdjust, ScaledHalfHeightAdjust);
+	CrouchEyeOffset.Z += StartBaseEyeHeight - BaseEyeHeight - HalfHeightAdjust;
+	GetFirstPersonCameraComponent()->SetRelativeLocation(FVector(0.0f,0.0f, BaseEyeHeight), false);
+}
+
+void AGameOffCharacter::OnEndCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust)
+{
+	if (HalfHeightAdjust == 0.0f)
+	{
+		return;
+	}
+	const float StartBaseEyeHeight = BaseEyeHeight;
+	Super::OnEndCrouch(HalfHeightAdjust, ScaledHalfHeightAdjust);
+	CrouchEyeOffset.Z += StartBaseEyeHeight - BaseEyeHeight + HalfHeightAdjust;
+	GetFirstPersonCameraComponent()->SetRelativeLocation(FVector(0.0f,0.0f, BaseEyeHeight), false);
+}
+
+void AGameOffCharacter::CalcCamera(float DeltaTime, FMinimalViewInfo& OutResult)
+{
+	GetFirstPersonCameraComponent()->GetCameraView(DeltaTime,OutResult);
+	OutResult.Location += CrouchEyeOffset;
 }
 
 void AGameOffCharacter::BeginPlay()
@@ -57,6 +91,13 @@ void AGameOffCharacter::BeginPlay()
 		}
 	}
 
+}
+
+void AGameOffCharacter::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	float CrouchInterpTime = FMath::Min(1.0f, CrouchSpeed * DeltaSeconds);
+	CrouchEyeOffset = (1.0f - CrouchInterpTime) * CrouchEyeOffset;
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -78,6 +119,8 @@ void AGameOffCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 		// Toggle the flash light
 		EnhancedInputComponent->BindAction(FlashLightAction, ETriggerEvent::Started, this, &AGameOffCharacter::ToggleFlashLight);
+
+		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Started, this, &AGameOffCharacter::CrouchFunction);
 	}
 	else
 	{
@@ -126,6 +169,19 @@ void AGameOffCharacter::ToggleFlashLight(const FInputActionValue& Value)
 		LightComponent->SetVisibility(true);
 	}
 	bIsFlashLightOpen = !bIsFlashLightOpen;
+}
+
+void AGameOffCharacter::CrouchFunction(const FInputActionValue& Value)
+{
+	if (bIsCrouch)
+	{
+		this->UnCrouch();
+	}
+	else
+	{
+		this->Crouch();
+	}
+	bIsCrouch = !bIsCrouch;
 }
 
 
