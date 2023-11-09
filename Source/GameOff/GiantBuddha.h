@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "BuddhaHand.h"
 #include "GameOffCharacter.h"
 #include "Components/SpotLightComponent.h"
 #include "GameFramework/Actor.h"
@@ -45,6 +46,16 @@ public:
 	float LightChangeIntensity = 1500;
 
 	int32 CurrIndex = 0;
+
+	float InitialIntensity = 0;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<ABuddhaHand> BuddhaHandClass;
+
+	FTimerHandle TimerHandle;
+
+	UPROPERTY(EditAnywhere)
+	float AttackFrequency = 1.0f;
 	
 protected:
 	// Called when the game starts or when spawned
@@ -60,4 +71,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void SpawnHand();
+
 };
+
+

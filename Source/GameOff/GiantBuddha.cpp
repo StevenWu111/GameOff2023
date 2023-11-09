@@ -26,6 +26,7 @@ void AGiantBuddha::BeginPlay()
 {
 	Super::BeginPlay();
 	ConeDetectorComponent->OnComponentBeginOverlap.AddDynamic(this,&AGiantBuddha::DetectorOverlapBegin);
+	InitialIntensity = LightComponent->Intensity;
 }
 
 void AGiantBuddha::DetectorOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
@@ -36,8 +37,9 @@ void AGiantBuddha::DetectorOverlapBegin(UPrimitiveComponent* OverlappedComponent
 		if (!Player->bIsHiding)
 		{
 			MainPlayer = Player;
-			//CurrStatus = Tracking;
+			CurrStatus = Tracking;
 			LightComponent->SetIntensity(LightChangeIntensity);
+			GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AGiantBuddha::SpawnHand, AttackFrequency, true, 0.0f);
 		}
 	}
 	else if (!TargetActors.IsEmpty() && OtherActor == TargetActors[CurrIndex] && CurrStatus == Searching)
@@ -53,6 +55,16 @@ void AGiantBuddha::DetectorOverlapBegin(UPrimitiveComponent* OverlappedComponent
 	}
 }
 
+void AGiantBuddha::SpawnHand()
+{
+	if (BuddhaHandClass)
+	{
+		const FVector SpawnLocation = this->GetActorLocation();
+		const FRotator SpawnRotation = this->GetActorRotation();
+		GetWorld()->SpawnActor(BuddhaHandClass, &SpawnLocation, &SpawnRotation);
+	}
+}
+
 // Called every frame
 void AGiantBuddha::Tick(float DeltaTime)
 {
@@ -60,6 +72,16 @@ void AGiantBuddha::Tick(float DeltaTime)
 	switch (CurrStatus)
 	{
 	case Tracking:
+		if (MainPlayer)
+		{
+			RotateToAPoint(MainPlayer, DeltaTime);
+			if (MainPlayer->bIsHiding)
+			{
+				CurrStatus = Searching;
+				LightComponent->SetIntensity(InitialIntensity);
+				GetWorld()->GetTimerManager().ClearTimer(TimerHandle);
+			}
+		}
 		break;
 	default:
 		if (!TargetActors.IsEmpty())

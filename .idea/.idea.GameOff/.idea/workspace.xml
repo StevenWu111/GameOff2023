@@ -8,16 +8,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3553205b-ce98-4ec2-84ba-be9aa3f2b050" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprint/BP_GiantBuddha.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/BP_GiantBuddha.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_FirstPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_FirstPersonCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FirstPerson/Input/IMC_Default.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FirstPerson/Input/IMC_Default.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/2/9A/140K21CQPR2UHI9URYDV3W.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/2/9A/140K21CQPR2UHI9URYDV3W.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/8/Z7/W1SXRCM1KAKBJOIZDLHZ47.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/8/Z7/W1SXRCM1KAKBJOIZDLHZ47.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/A/HG/F6AL0T44TXFLKD9HVBQJ5J.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/A/HG/F6AL0T44TXFLKD9HVBQJ5J.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/A/KU/12YG9I1QW2GU72MG8QQX1K.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/A/KU/12YG9I1QW2GU72MG8QQX1K.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/5/8H/A7E8KV4IOVWJ4BMEHNJUDG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/5/8H/A7E8KV4IOVWJ4BMEHNJUDG.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/7/8K/0OLPBOSZCPU1X7E3PCLCGF.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/GameOff/GiantBuddha.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GiantBuddha.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/GameOff/GiantBuddha.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GiantBuddha.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,6 +209,8 @@
       <workItem from="1699423121346" duration="827000" />
       <workItem from="1699424347718" duration="5278000" />
       <workItem from="1699443694682" duration="2301000" />
+      <workItem from="1699534336144" duration="52000" />
+      <workItem from="1699534412023" duration="6671000" />
     </task>
     <servers />
   </component>
