@@ -3,7 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameOffCharacter.h"
 #include "Components/BoxComponent.h"
+#include "Engine/PostProcessVolume.h"
 #include "GameFramework/Actor.h"
 #include "HidingZone.generated.h"
 
@@ -21,6 +23,9 @@ public:
 	UPROPERTY(EditAnywhere)
 	bool bIdCrouchNeeded = false;
 
+	UPROPERTY(EditAnywhere)
+	APostProcessVolume* GhostVolume;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -32,4 +37,11 @@ protected:
 	UFUNCTION()
 	void SafeAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+	virtual void Tick(float DeltaSeconds) override;
+
+	AGameOffCharacter* Character = nullptr;
+	
+
 };
+
+

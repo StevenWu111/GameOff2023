@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
 #include "Components/SpotLightComponent.h"
+#include "Engine/PostProcessVolume.h"
 #include "GameOffCharacter.generated.h"
 
 class UInputComponent;
@@ -50,6 +51,7 @@ class AGameOffCharacter : public ACharacter
 
 	UPROPERTY(EditAnywhere)
 	USpotLightComponent* LightComponent;
+
 	
 public:
 	AGameOffCharacter();
@@ -59,6 +61,8 @@ public:
 	void OnEndCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust) override;
 
 	void CalcCamera(float DeltaTime, FMinimalViewInfo& OutResult) override;
+
+	APostProcessVolume* Volume;
 
 protected:
 	virtual void BeginPlay();

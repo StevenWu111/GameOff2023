@@ -9,7 +9,7 @@
 AHidingZone::AHidingZone()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComponent"));
@@ -29,13 +29,27 @@ void AHidingZone::SafeAreaOverlapBegin(UPrimitiveComponent* OverlappedComponent,
 {
 	if (AGameOffCharacter* Player = Cast<AGameOffCharacter>(OtherActor))
 	{
-		if (bIdCrouchNeeded && Player->bIsCrouch)
+		Character = Player;
+		if (bIdCrouchNeeded)
 		{
-			Player->bIsHiding = true;
+			if (Player->bIsCrouch)
+			{
+				Player->bIsHiding = true;
+				//Safety check
+				if (GhostVolume)
+				{
+					GhostVolume->bEnabled = true;
+				}
+			}
 		}
 		else
 		{
 			Player->bIsHiding = true;
+			//Safety check
+			if (GhostVolume)
+			{
+				GhostVolume->bEnabled = true;
+			}
 		}
 	}
 }
@@ -46,6 +60,30 @@ void AHidingZone::SafeAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AActo
 	if (AGameOffCharacter* Player = Cast<AGameOffCharacter>(OtherActor))
 	{
 		Player->bIsHiding = false;
+		//Safety check
+		if (GhostVolume)
+		{
+			GhostVolume->bEnabled = false;
+		}
+		Character = nullptr;
+	}
+}
+
+inline void AHidingZone::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	if (Character && bIdCrouchNeeded && GhostVolume)
+	{
+		if (Character->bIsCrouch)
+		{
+			Character->bIsHiding = true;
+			GhostVolume->bEnabled = true;
+		}
+		else
+		{
+			Character->bIsHiding = false;
+			GhostVolume->bEnabled = false;
+		}
 	}
 }
 
