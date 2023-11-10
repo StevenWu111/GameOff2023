@@ -55,7 +55,7 @@ void AGameOffCharacter::OnStartCrouch(float HalfHeightAdjust, float ScaledHalfHe
 	
 	const float StartBaseEyeHeight = BaseEyeHeight;
 	Super::OnStartCrouch(HalfHeightAdjust, ScaledHalfHeightAdjust);
-	CrouchEyeOffset.Z += StartBaseEyeHeight - BaseEyeHeight - HalfHeightAdjust;
+	CrouchEyeOffset.Z += StartBaseEyeHeight - BaseEyeHeight + HalfHeightAdjust;
 	GetFirstPersonCameraComponent()->SetRelativeLocation(FVector(0.0f,0.0f, BaseEyeHeight), false);
 }
 
@@ -67,7 +67,7 @@ void AGameOffCharacter::OnEndCrouch(float HalfHeightAdjust, float ScaledHalfHeig
 	}
 	const float StartBaseEyeHeight = BaseEyeHeight;
 	Super::OnEndCrouch(HalfHeightAdjust, ScaledHalfHeightAdjust);
-	CrouchEyeOffset.Z += StartBaseEyeHeight - BaseEyeHeight + HalfHeightAdjust;
+	CrouchEyeOffset.Z += StartBaseEyeHeight - BaseEyeHeight - HalfHeightAdjust;
 	GetFirstPersonCameraComponent()->SetRelativeLocation(FVector(0.0f,0.0f, BaseEyeHeight), false);
 }
 
@@ -97,7 +97,7 @@ void AGameOffCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	float CrouchInterpTime = FMath::Min(1.0f, CrouchSpeed * DeltaSeconds);
-	CrouchEyeOffset = (1.0f - CrouchInterpTime) * CrouchEyeOffset;
+	CrouchEyeOffset = CrouchEyeOffset * (1.0f - CrouchInterpTime);
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
