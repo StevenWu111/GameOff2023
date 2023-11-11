@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameOffCharacter.h"
 #include "Components/BoxComponent.h"
-#include "Engine/PostProcessVolume.h"
 #include "GameFramework/Actor.h"
 #include "HidingZone.generated.h"
 
@@ -20,11 +19,8 @@ public:
 	UPROPERTY(EditAnywhere)
 	UBoxComponent* BoxComponent;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bIdCrouchNeeded = false;
-
-	UPROPERTY(EditAnywhere)
-	APostProcessVolume* GhostVolume;
 
 protected:
 	// Called when the game starts or when spawned

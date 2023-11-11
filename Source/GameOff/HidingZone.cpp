@@ -35,21 +35,11 @@ void AHidingZone::SafeAreaOverlapBegin(UPrimitiveComponent* OverlappedComponent,
 			if (Player->bIsCrouch)
 			{
 				Player->bIsHiding = true;
-				//Safety check
-				if (GhostVolume)
-				{
-					GhostVolume->bEnabled = true;
-				}
 			}
 		}
 		else
 		{
 			Player->bIsHiding = true;
-			//Safety check
-			if (GhostVolume)
-			{
-				GhostVolume->bEnabled = true;
-			}
 		}
 	}
 }
@@ -60,11 +50,6 @@ void AHidingZone::SafeAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AActo
 	if (AGameOffCharacter* Player = Cast<AGameOffCharacter>(OtherActor))
 	{
 		Player->bIsHiding = false;
-		//Safety check
-		if (GhostVolume)
-		{
-			GhostVolume->bEnabled = false;
-		}
 		Character = nullptr;
 	}
 }
@@ -72,17 +57,15 @@ void AHidingZone::SafeAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AActo
 inline void AHidingZone::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
-	if (Character && bIdCrouchNeeded && GhostVolume)
+	if (Character && bIdCrouchNeeded)
 	{
 		if (Character->bIsCrouch)
 		{
 			Character->bIsHiding = true;
-			GhostVolume->bEnabled = true;
 		}
 		else
 		{
 			Character->bIsHiding = false;
-			GhostVolume->bEnabled = false;
 		}
 	}
 }

@@ -9,8 +9,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3553205b-ce98-4ec2-84ba-be9aa3f2b050" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/GiantBuddha.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GiantBuddha.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/SearchingUpdateZone.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/SearchingUpdateZone.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprint/BP_HidingZone.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/BP_HidingZone.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/2/1E/V1BO6F02U09TPXOSLRU7L5.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/2/1E/V1BO6F02U09TPXOSLRU7L5.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/4/6D/32A6YI2L0K4CXPXZWY25I2.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/5/8H/A7E8KV4IOVWJ4BMEHNJUDG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/5/8H/A7E8KV4IOVWJ4BMEHNJUDG.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/GameOff/HidingZone.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/HidingZone.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,6 +215,7 @@
       <workItem from="1699628339180" duration="3251000" />
       <workItem from="1699684221548" duration="5202000" />
       <workItem from="1699690360538" duration="2233000" />
+      <workItem from="1699702303093" duration="3304000" />
     </task>
     <servers />
   </component>

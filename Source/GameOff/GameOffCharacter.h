@@ -96,6 +96,10 @@ public:
 	/*Is hiding or not*/
 	bool bIsHiding = false;
 
+	/*Use this to track how many hiding zone that we are overlap with, avoid multiple timeline called when we overlap with multiple zone*/
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	int32 HidingZoneCount = 0;
+
 	UPROPERTY(EditAnywhere)
 	FVector CrouchEyeOffset;
 
