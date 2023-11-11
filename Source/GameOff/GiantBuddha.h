@@ -23,39 +23,46 @@ public:
 	// Sets default values for this actor's properties
 	AGiantBuddha();
 
-	UPROPERTY(EditAnywhere)
-	TArray<AActor*> TargetActors;
+	UPROPERTY(EditAnywhere, Category = "Target Location")
+	TArray<AActor*> InitialArray;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "Target Location")
+	int32 BreakNum = 4;
+	
+	TArray<TArray<AActor*>> TargetActors;
+
+	UPROPERTY(EditAnywhere, Category = "Actor Component")
 	UStaticMeshComponent* MeshComponent;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "Actor Component")
 	UStaticMeshComponent* ConeDetectorComponent;
 
 	GiantBuddhaStatus CurrStatus = Searching;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "Actor Component")
 	USpotLightComponent* LightComponent;
 
 	void RotateToAPoint(const AActor* TargetActor, float DeltaTime);
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "Actor Property")
 	float RotationSpeed = 10.0f;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "Actor Property")
 	float LightChangeIntensity = 1500;
 
 	int32 CurrIndex = 0;
 
 	float InitialIntensity = 0;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "Actor Property")
 	TSubclassOf<ABuddhaHand> BuddhaHandClass;
 
 	FTimerHandle TimerHandle;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "Actor Property")
 	float AttackFrequency = 1.0f;
+
+	int32 AreaIndex = 0;
 	
 protected:
 	// Called when the game starts or when spawned

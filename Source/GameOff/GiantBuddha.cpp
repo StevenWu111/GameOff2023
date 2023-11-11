@@ -27,6 +27,18 @@ void AGiantBuddha::BeginPlay()
 	Super::BeginPlay();
 	ConeDetectorComponent->OnComponentBeginOverlap.AddDynamic(this,&AGiantBuddha::DetectorOverlapBegin);
 	InitialIntensity = LightComponent->Intensity;
+	int32 OuterArray = 0;
+	TArray<AActor*> Temp;
+	for (int i = 0; i<InitialArray.Num();i++)
+	{
+		if (i+1 % BreakNum == 0)
+		{
+			TargetActors.Add(Temp);
+			Temp.Empty();
+			OuterArray++;
+		}
+		Temp.Add(InitialArray[i]);
+	}
 }
 
 void AGiantBuddha::DetectorOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
@@ -42,9 +54,9 @@ void AGiantBuddha::DetectorOverlapBegin(UPrimitiveComponent* OverlappedComponent
 			GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AGiantBuddha::SpawnHand, AttackFrequency, true, 0.0f);
 		}
 	}
-	else if (!TargetActors.IsEmpty() && OtherActor == TargetActors[CurrIndex] && CurrStatus == Searching)
+	else if (!TargetActors[AreaIndex].IsEmpty() && OtherActor == TargetActors[AreaIndex][CurrIndex] && CurrStatus == Searching)
 	{
-		if (CurrIndex == TargetActors.Num()-1)
+		if (CurrIndex == TargetActors[AreaIndex].Num()-1)
 		{
 			CurrIndex = 0;
 		}
@@ -84,9 +96,9 @@ void AGiantBuddha::Tick(float DeltaTime)
 		}
 		break;
 	default:
-		if (!TargetActors.IsEmpty())
+		if (!TargetActors[AreaIndex].IsEmpty())
 		{
-			RotateToAPoint(TargetActors[CurrIndex], DeltaTime);
+			RotateToAPoint(TargetActors[AreaIndex][CurrIndex], DeltaTime);
 		}
 		break;
 	}
