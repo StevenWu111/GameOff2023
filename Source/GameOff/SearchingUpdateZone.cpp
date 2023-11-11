@@ -24,7 +24,7 @@ void ASearchingUpdateZone::BeginPlay()
 void ASearchingUpdateZone::UpdateZoneOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (GiantBuddha)
+	if (GiantBuddha && Cast<AGameOffCharacter>(OtherActor))
 	{
 		if (GiantBuddha->CurrIndex < GiantBuddha->TargetActors.Num())
 		{

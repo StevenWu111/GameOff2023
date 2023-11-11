@@ -31,13 +31,13 @@ void AGiantBuddha::BeginPlay()
 	TArray<AActor*> Temp;
 	for (int i = 0; i<InitialArray.Num();i++)
 	{
-		if (i+1 % BreakNum == 0)
+		Temp.Add(InitialArray[i]);
+		if ((i+1) % BreakNum == 0)
 		{
 			TargetActors.Add(Temp);
 			Temp.Empty();
 			OuterArray++;
 		}
-		Temp.Add(InitialArray[i]);
 	}
 }
 
