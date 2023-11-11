@@ -7,12 +7,7 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3553205b-ce98-4ec2-84ba-be9aa3f2b050" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/5/8H/A7E8KV4IOVWJ4BMEHNJUDG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/5/8H/A7E8KV4IOVWJ4BMEHNJUDG.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/GiantBuddha.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GiantBuddha.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/GiantBuddha.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GiantBuddha.h" afterDir="false" />
-    </list>
+    <list default="true" id="3553205b-ce98-4ec2-84ba-be9aa3f2b050" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -211,6 +206,7 @@
       <workItem from="1699588368010" duration="2446000" />
       <workItem from="1699628339180" duration="3251000" />
       <workItem from="1699684221548" duration="5202000" />
+      <workItem from="1699690360538" duration="332000" />
     </task>
     <servers />
   </component>
