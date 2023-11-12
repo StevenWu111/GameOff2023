@@ -91,6 +91,7 @@ public:
 	bool bIsFlashLightOpen = true;
 
 	/*Is crouch or not*/
+	UPROPERTY(BlueprintReadWrite)
 	bool bIsCrouch = false;
 
 	/*Is hiding or not*/

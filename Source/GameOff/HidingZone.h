@@ -35,7 +35,8 @@ protected:
 
 	virtual void Tick(float DeltaSeconds) override;
 
-	AGameOffCharacter* Character = nullptr;
+	UPROPERTY(BlueprintReadWrite)
+	AGameOffCharacter* CharacterRef = nullptr;
 	
 
 };

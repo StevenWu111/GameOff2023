@@ -29,7 +29,7 @@ void AHidingZone::SafeAreaOverlapBegin(UPrimitiveComponent* OverlappedComponent,
 {
 	if (AGameOffCharacter* Player = Cast<AGameOffCharacter>(OtherActor))
 	{
-		Character = Player;
+		CharacterRef = Player;
 		if (bIdCrouchNeeded)
 		{
 			if (Player->bIsCrouch)
@@ -50,22 +50,22 @@ void AHidingZone::SafeAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AActo
 	if (AGameOffCharacter* Player = Cast<AGameOffCharacter>(OtherActor))
 	{
 		Player->bIsHiding = false;
-		Character = nullptr;
+		CharacterRef = nullptr;
 	}
 }
 
 inline void AHidingZone::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
-	if (Character && bIdCrouchNeeded)
+	if (CharacterRef && bIdCrouchNeeded)
 	{
-		if (Character->bIsCrouch)
+		if (CharacterRef->bIsCrouch)
 		{
-			Character->bIsHiding = true;
+			CharacterRef->bIsHiding = true;
 		}
 		else
 		{
-			Character->bIsHiding = false;
+			CharacterRef->bIsHiding = false;
 		}
 	}
 }
