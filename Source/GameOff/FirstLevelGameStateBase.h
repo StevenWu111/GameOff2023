@@ -13,5 +13,20 @@ UCLASS()
 class GAMEOFF_API AFirstLevelGameStateBase : public AGameStateBase
 {
 	GENERATED_BODY()
+public:
+	AFirstLevelGameStateBase();
+	
+
+	UPROPERTY(BlueprintReadOnly)
+	int32 Minutes = 0;
+
+	UPROPERTY(BlueprintReadOnly)
+	float Seconds = 0.0f;
+
+
+protected:
+	
+	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaSeconds) override;
 	
 };
