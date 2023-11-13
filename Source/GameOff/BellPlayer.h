@@ -1,0 +1,42 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "FirstLevelGameStateBase.h"
+#include "Components/AudioComponent.h"
+#include "GameFramework/Actor.h"
+#include "BellPlayer.generated.h"
+
+UCLASS()
+class GAMEOFF_API ABellPlayer : public AActor
+{
+	GENERATED_BODY()
+	
+public:	
+	// Sets default values for this actor's properties
+	ABellPlayer();
+
+	UPROPERTY(EditAnywhere)
+	UAudioComponent* AudioComp;
+
+	UPROPERTY(EditAnywhere)
+	float TriggerTimeInSeconds = 60.5f;
+
+	int32 PlayedNumTemp = 0;
+	
+	void PlaySound();
+
+	void LoopingSound();
+	
+	FTimerHandle StartSoundTimerHandle;
+
+	FTimerHandle LoopingSoundTimerHandle;
+
+	AFirstLevelGameStateBase* CurrGameState;
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+	
+
+};
