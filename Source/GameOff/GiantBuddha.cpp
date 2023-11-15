@@ -21,6 +21,7 @@ AGiantBuddha::AGiantBuddha()
 }
 
 
+
 // Called when the game starts or when spawned
 void AGiantBuddha::BeginPlay()
 {

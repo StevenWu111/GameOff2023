@@ -3,7 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameOffCharacter.h"
 #include "Interactable.h"
+#include "Components/BoxComponent.h"
 #include "GameFramework/Actor.h"
 #include "LaserBuddha.generated.h"
 
@@ -16,6 +18,11 @@ public:
 	// Sets default values for this actor's properties
 	ALaserBuddha();
 
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* MeshComponent;
+	UPROPERTY(EditAnywhere)
+	UBoxComponent* BoxComponent;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -26,6 +33,32 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Interact")
 	void Interact();
+
+	FRotator TargetRotation;
+
+	void RotateToTargetRotation(FRotator Target, float DeltaTime);
+
+	UPROPERTY(EditAnywhere)
+	TArray<FRotator> TargetRotationsTemp;
+
+	TArray<FRotator> TargetRotations;
+
+	int CurrIndex = NULL;
+
+	AGameOffCharacter* Player;
+
+	bool bIsRotating = false;
+
+	bool IsRotateClosedToTheTarget();
+	
+	UFUNCTION()
+	void RotateAreaOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+	void  RotateAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 	
 
 };
+
+

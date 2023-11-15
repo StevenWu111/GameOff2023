@@ -8,6 +8,8 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "Interactable.h"
+#include "Blueprint/UserWidget.h"
 #include "Engine/LocalPlayer.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -91,6 +93,11 @@ void AGameOffCharacter::BeginPlay()
 		}
 	}
 
+	if (PressEUI)
+	{
+		PressEUIInstance = CreateWidget<UUserWidget>(GetWorld(), PressEUI);
+	}
+
 }
 
 void AGameOffCharacter::Tick(float DeltaSeconds)
@@ -121,6 +128,8 @@ void AGameOffCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 		EnhancedInputComponent->BindAction(FlashLightAction, ETriggerEvent::Started, this, &AGameOffCharacter::ToggleFlashLight);
 
 		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Started, this, &AGameOffCharacter::CrouchFunction);
+
+		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &AGameOffCharacter::StartInteract);
 	}
 	else
 	{
@@ -185,6 +194,19 @@ void AGameOffCharacter::CrouchFunction(const FInputActionValue& Value)
 }
 
 
+void AGameOffCharacter::StartInteract(const FInputActionValue& Value)
+{
+	if (!InteractableActor)
+	{
+		return;
+	}
+	if (InteractableActor->GetClass()->ImplementsInterface(UInteractable::StaticClass()))
+	{
+		IInteractable::Execute_Interact(InteractableActor);
+	}
+}
+
+
 
 void AGameOffCharacter::SetHasRifle(bool bNewHasRifle)
 {
@@ -195,3 +217,4 @@ bool AGameOffCharacter::GetHasRifle()
 {
 	return bHasRifle;
 }
+

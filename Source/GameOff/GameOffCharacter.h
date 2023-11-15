@@ -6,7 +6,6 @@
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
 #include "Components/SpotLightComponent.h"
-#include "Engine/PostProcessVolume.h"
 #include "GameOffCharacter.generated.h"
 
 class UInputComponent;
@@ -49,9 +48,15 @@ class AGameOffCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* CrouchAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* InteractAction;
+
 	UPROPERTY(EditAnywhere)
 	USpotLightComponent* LightComponent;
-
+	
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UUserWidget> PressEUI;
+	
 	
 public:
 	AGameOffCharacter();
@@ -61,8 +66,7 @@ public:
 	void OnEndCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust) override;
 
 	void CalcCamera(float DeltaTime, FMinimalViewInfo& OutResult) override;
-
-	APostProcessVolume* Volume;
+	
 
 protected:
 	virtual void BeginPlay();
@@ -107,6 +111,10 @@ public:
 	UPROPERTY(EditAnywhere)
 	float CrouchSpeed;
 
+	AActor* InteractableActor;
+
+	UUserWidget* PressEUIInstance;
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
@@ -117,6 +125,8 @@ protected:
 	void ToggleFlashLight(const FInputActionValue& Value);
 
 	void CrouchFunction(const FInputActionValue& Value);
+
+	void StartInteract(const FInputActionValue& Value);
 
 protected:
 	// APawn interface
@@ -130,3 +140,6 @@ public:
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
 };
+
+
+
