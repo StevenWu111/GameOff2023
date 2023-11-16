@@ -85,7 +85,7 @@ void AGameOffCharacter::BeginPlay()
 	Super::BeginPlay();
 
 	// Add Input Mapping Context
-	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
+	if (const APlayerController* PlayerController = Cast<APlayerController>(Controller))
 	{
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 		{
@@ -104,7 +104,48 @@ void AGameOffCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	float CrouchInterpTime = FMath::Min(1.0f, CrouchSpeed * DeltaSeconds);
-	CrouchEyeOffset = CrouchEyeOffset * (1.0f - CrouchInterpTime);
+	CrouchEyeOffset = CrouchEyeOffset * FVector3d(1.0f - CrouchInterpTime);
+
+	ScaleSize(DeltaSeconds);
+}
+
+void AGameOffCharacter::ScaleSize(float DeltaTime)
+{
+	const float CurrentScale = this->GetActorScale().X;
+	FVector NextScale;
+	const FVector TargetScaleDownSize = FVector3d(ScaleDownSize);
+	const FVector TargetScaleUpSize = FVector3d(1.0f);
+	switch (CurrScaleStatus)
+	{
+	case ScaleDown:
+		if (abs(CurrentScale-ScaleDownSize) <= 0.02 )
+		{
+			this->SetActorScale3D(TargetScaleDownSize);
+			CurrScaleStatus = SmallScale;
+		}
+		else
+		{
+			NextScale = this->GetActorScale() - FVector3d(1.0f) * FVector3d(ScaleSpeed) * FVector3d(DeltaTime);
+			this->SetActorScale3D(NextScale);
+		}
+		break;
+	case ScaleUp:
+		if (abs(CurrentScale-1.0f) <= 0.02)
+		{
+			this->SetActorScale3D(TargetScaleUpSize);
+			CurrScaleStatus = BigScale;
+		}
+		else
+		{
+			NextScale = this->GetActorScale() + FVector3d(1.0f) * FVector3d(ScaleSpeed) * FVector3d(DeltaTime);
+			this->SetActorScale3D(NextScale);
+		}
+		break;
+		default:
+			break;
+	}
+	
+	
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -130,6 +171,8 @@ void AGameOffCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Started, this, &AGameOffCharacter::CrouchFunction);
 
 		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &AGameOffCharacter::StartInteract);
+
+		EnhancedInputComponent->BindAction(SwitchSize, ETriggerEvent::Started, this, &AGameOffCharacter::StartSwitchSize);
 	}
 	else
 	{
@@ -182,6 +225,10 @@ void AGameOffCharacter::ToggleFlashLight(const FInputActionValue& Value)
 
 void AGameOffCharacter::CrouchFunction(const FInputActionValue& Value)
 {
+	if (CurrScaleStatus == SmallScale)
+	{
+		return;
+	}
 	if (bIsCrouch)
 	{
 		this->UnCrouch();
@@ -206,6 +253,25 @@ void AGameOffCharacter::StartInteract(const FInputActionValue& Value)
 	}
 }
 
+void AGameOffCharacter::StartSwitchSize(const FInputActionValue& Value)
+{
+	if (CurrScaleStatus != SmallScale && CurrScaleStatus != BigScale)
+	{
+		return;
+	}
+	if (this->GetActorScale() == FVector3d(1.0f))
+	{
+		if (bIsCrouch)
+		{
+			CrouchFunction(NULL);
+		}
+		CurrScaleStatus = ScaleDown;
+	}
+	else
+	{
+		CurrScaleStatus = ScaleUp;
+	}
+}
 
 
 void AGameOffCharacter::SetHasRifle(bool bNewHasRifle)

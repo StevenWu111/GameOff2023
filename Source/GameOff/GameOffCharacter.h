@@ -8,6 +8,14 @@
 #include "Components/SpotLightComponent.h"
 #include "GameOffCharacter.generated.h"
 
+
+enum EScaleStatus
+{
+	ScaleUp,
+	ScaleDown,
+	SmallScale,
+	BigScale
+};
 class UInputComponent;
 class USkeletalMeshComponent;
 class UCameraComponent;
@@ -50,6 +58,9 @@ class AGameOffCharacter : public ACharacter
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* InteractAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* SwitchSize;
 
 	UPROPERTY(EditAnywhere)
 	USpotLightComponent* LightComponent;
@@ -115,6 +126,14 @@ public:
 
 	UUserWidget* PressEUIInstance;
 
+	EScaleStatus CurrScaleStatus = BigScale;
+
+	UPROPERTY(EditAnywhere)
+	float ScaleDownSize = 0.1;
+
+	UPROPERTY(EditAnywhere)
+	float ScaleSpeed = 1;
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
@@ -127,6 +146,10 @@ protected:
 	void CrouchFunction(const FInputActionValue& Value);
 
 	void StartInteract(const FInputActionValue& Value);
+
+	void StartSwitchSize(const FInputActionValue& Value);
+
+	void ScaleSize(float DeltaTime);
 
 protected:
 	// APawn interface
