@@ -57,7 +57,8 @@ public:
 
 	UFUNCTION()
 	void  RotateAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
-	
+
+	UUserWidget* WidgetInstance;
 
 };
 

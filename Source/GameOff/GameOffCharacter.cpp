@@ -93,11 +93,6 @@ void AGameOffCharacter::BeginPlay()
 		}
 	}
 
-	if (PressEUI)
-	{
-		PressEUIInstance = CreateWidget<UUserWidget>(GetWorld(), PressEUI);
-	}
-
 }
 
 void AGameOffCharacter::Tick(float DeltaSeconds)
@@ -187,6 +182,10 @@ void AGameOffCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 void AGameOffCharacter::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
+	if(CurrScaleStatus == ScaleUp || CurrScaleStatus == ScaleDown)
+	{
+		return;
+	}
 	FVector2D MovementVector = Value.Get<FVector2D>();
 
 	if (Controller != nullptr)

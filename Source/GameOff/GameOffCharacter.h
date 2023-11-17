@@ -64,9 +64,7 @@ class AGameOffCharacter : public ACharacter
 
 	UPROPERTY(EditAnywhere)
 	USpotLightComponent* LightComponent;
-	
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<UUserWidget> PressEUI;
+
 	
 	
 public:
@@ -124,8 +122,6 @@ public:
 
 	AActor* InteractableActor;
 
-	UUserWidget* PressEUIInstance;
-
 	EScaleStatus CurrScaleStatus = BigScale;
 
 	UPROPERTY(EditAnywhere)
@@ -133,6 +129,9 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	float ScaleSpeed = 1;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UUserWidget> PressEUI;
 
 protected:
 	/** Called for movement input */
@@ -161,7 +160,6 @@ public:
 	USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }
 	/** Returns FirstPersonCameraComponent subobject **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
-
 };
 
 

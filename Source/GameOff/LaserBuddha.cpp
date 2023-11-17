@@ -58,9 +58,13 @@ void ALaserBuddha::RotateAreaOverlapBegin(UPrimitiveComponent* OverlappedCompone
 	if (Player)
 	{
 		Player->InteractableActor = this;
-		if (Player->PressEUIInstance)
+		if (Player->PressEUI)
 		{
-			Player->PressEUIInstance->AddToViewport();
+			WidgetInstance = CreateWidget(GetWorld(), Player->PressEUI);
+			if (WidgetInstance)
+			{
+				WidgetInstance->AddToViewport();
+			}
 		}
 	}
 }
@@ -71,9 +75,10 @@ void ALaserBuddha::RotateAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AA
 	if (Player)
 	{
 		Player->InteractableActor = nullptr;
-		if (Player->PressEUIInstance)
+		if (WidgetInstance)
 		{
-			Player->PressEUIInstance->RemoveFromParent();
+			WidgetInstance->RemoveFromParent();
+			WidgetInstance = nullptr;
 		}
 		Player = nullptr;
 	}
@@ -102,9 +107,10 @@ void ALaserBuddha::Interact_Implementation()
 		if (Player)
 		{
 			Player->InteractableActor = nullptr;
-			if (Player->PressEUIInstance)
+			if (WidgetInstance)
 			{
-				Player->PressEUIInstance->RemoveFromParent();
+				WidgetInstance->RemoveFromParent();
+				WidgetInstance = nullptr;
 			}
 		}
 	}
