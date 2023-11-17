@@ -4,6 +4,7 @@
 #include "LaserBuddha.h"
 
 #include "GameOffCharacter.h"
+#include "KismetTraceUtils.h"
 #include "Blueprint/UserWidget.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -15,22 +16,41 @@ ALaserBuddha::ALaserBuddha()
 
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MainMestComponent"));
+	LaserMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("LaserMestComponent"));
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxCollider"));
 	MeshComponent->SetupAttachment(RootComponent);
 	BoxComponent->SetupAttachment(MeshComponent);
+	LaserMeshComponent->SetupAttachment(MeshComponent);
 }
 
 // Called when the game starts or when spawned
 void ALaserBuddha::BeginPlay()
 {
 	Super::BeginPlay();
+	World = GetWorld();
 	BoxComponent->OnComponentBeginOverlap.AddDynamic(this,&ALaserBuddha::RotateAreaOverlapBegin);
 	BoxComponent->OnComponentEndOverlap.AddDynamic(this,&ALaserBuddha::ALaserBuddha::RotateAreaOverlapOver);
+
+	LaserMeshComponent->OnComponentHit.AddDynamic(this,&ALaserBuddha::LaserHit);
 
 	for (auto RotationTemp:TargetRotationsTemp)
 	{
 		TargetRotations.Add(this->GetActorRotation()+RotationTemp);
 	}
+	TArray<AActor*> IgnoreActors;
+	IgnoreActors.Add(this);
+	const FCollisionQueryParams Temp(FName(TEXT("Trace"), true, true));
+	TraceParams = Temp;
+	// Should we simple or complex collision?
+    TraceParams.bTraceComplex = true;
+    // We don't need Physics materials
+    TraceParams.bReturnPhysicalMaterial = false;
+    // Add our ActorsToIgnore
+    TraceParams.AddIgnoredActors(IgnoreActors);
+	TraceParams.TraceTag = TraceTag;
+
+	InitiScale = LaserMeshComponent->GetComponentScale();
+
 }
 
 // Called every frame
@@ -40,6 +60,23 @@ void ALaserBuddha::Tick(float DeltaTime)
 	if (!IsRotateClosedToTheTarget())
 	{
 		RotateToTargetRotation(TargetRotations[CurrIndex],DeltaTime);
+	}
+	if (!World)
+	{
+		return;
+	}
+	const FVector StartLocation = this->GetActorLocation() + this->GetActorForwardVector()*2;
+	const FVector EndLocation = this->GetActorLocation() + this->GetActorForwardVector()*Range;
+	World->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility, TraceParams);
+	World->DebugDrawTraceTag = TraceTag;
+	if (HitResult.GetActor() != nullptr)
+	{
+		const float ZScale = HitResult.Distance /100.0f;
+		LaserMeshComponent->SetWorldScale3D(FVector(InitiScale.X,InitiScale.Y,ZScale));
+	}
+	else
+	{
+		LaserMeshComponent->SetWorldScale3D(FVector(InitiScale.X,InitiScale.Y,Range));
 	}
 }
 
@@ -58,14 +95,7 @@ void ALaserBuddha::RotateAreaOverlapBegin(UPrimitiveComponent* OverlappedCompone
 	if (Player)
 	{
 		Player->InteractableActor = this;
-		if (Player->PressEUI)
-		{
-			WidgetInstance = CreateWidget(GetWorld(), Player->PressEUI);
-			if (WidgetInstance)
-			{
-				WidgetInstance->AddToViewport();
-			}
-		}
+		Player->AddInteractUI();
 	}
 }
 
@@ -75,12 +105,20 @@ void ALaserBuddha::RotateAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AA
 	if (Player)
 	{
 		Player->InteractableActor = nullptr;
-		if (WidgetInstance)
-		{
-			WidgetInstance->RemoveFromParent();
-			WidgetInstance = nullptr;
-		}
+		Player->RemoveInteractUI();
 		Player = nullptr;
+	}
+}
+
+void ALaserBuddha::LaserHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+{
+	if (AGameOffCharacter* OverlapPlayer = Cast<AGameOffCharacter>(OtherActor))
+	{
+		const FVector CollisionLocation = Hit.Location;
+		FVector Direction = OverlapPlayer->GetActorLocation() - CollisionLocation;
+		Direction.Normalize();
+		Direction = Direction*PushBackForce;
+		OverlapPlayer->LaunchCharacter(Direction, true, true);
 	}
 }
 
@@ -107,11 +145,7 @@ void ALaserBuddha::Interact_Implementation()
 		if (Player)
 		{
 			Player->InteractableActor = nullptr;
-			if (WidgetInstance)
-			{
-				WidgetInstance->RemoveFromParent();
-				WidgetInstance = nullptr;
-			}
+			Player->RemoveInteractUI();
 		}
 	}
 }

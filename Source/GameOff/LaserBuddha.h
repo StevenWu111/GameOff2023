@@ -21,7 +21,12 @@ public:
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* MeshComponent;
 	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* LaserMeshComponent;
+	UPROPERTY(EditAnywhere)
 	UBoxComponent* BoxComponent;
+
+	
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -58,7 +63,25 @@ public:
 	UFUNCTION()
 	void  RotateAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
-	UUserWidget* WidgetInstance;
+	UFUNCTION()
+	void LaserHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+	FHitResult HitResult;
+
+	UPROPERTY(EditAnywhere)
+	int Range = 5000;
+
+	FCollisionQueryParams TraceParams;
+
+	UWorld* World;
+
+	const FName TraceTag = "MyTraceTag";
+
+	FVector InitiScale;
+
+	int PushBackForce = 3000;
+
+	
 
 };
 

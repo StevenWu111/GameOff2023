@@ -79,6 +79,28 @@ void AGameOffCharacter::CalcCamera(float DeltaTime, FMinimalViewInfo& OutResult)
 	OutResult.Location += CrouchEyeOffset;
 }
 
+void AGameOffCharacter::AddInteractUI()
+{
+	if (PressEUI)
+	{
+		WidgetInstance = CreateWidget(GetWorld(), PressEUI);
+		if (WidgetInstance)
+		{
+			WidgetInstance->AddToViewport();
+		}
+	}
+}
+
+void AGameOffCharacter::RemoveInteractUI()
+{
+	if (WidgetInstance)
+	{
+		WidgetInstance->RemoveFromParent();
+		WidgetInstance->Destruct();
+		WidgetInstance = nullptr;
+	}
+}
+
 void AGameOffCharacter::BeginPlay()
 {
 	// Call the base class  

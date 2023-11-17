@@ -75,6 +75,9 @@ public:
 	void OnEndCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust) override;
 
 	void CalcCamera(float DeltaTime, FMinimalViewInfo& OutResult) override;
+
+	void AddInteractUI();
+	void RemoveInteractUI();
 	
 
 protected:
@@ -133,6 +136,8 @@ public:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UUserWidget> PressEUI;
 
+	UUserWidget* WidgetInstance;
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
@@ -160,6 +165,7 @@ public:
 	USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }
 	/** Returns FirstPersonCameraComponent subobject **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
+	
 };
 
 
