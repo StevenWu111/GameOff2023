@@ -16,8 +16,8 @@ AGiantBuddha::AGiantBuddha()
 	ConeDetectorComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("DetectorMesh"));
 	LightComponent = CreateDefaultSubobject<USpotLightComponent>(TEXT("LightComponent"));
 	MeshComponent->SetupAttachment(RootComponent);
-	LightComponent->SetupAttachment(MeshComponent);
-	ConeDetectorComponent->SetupAttachment(MeshComponent);
+	LightComponent->SetupAttachment(RootComponent);
+	ConeDetectorComponent->SetupAttachment(RootComponent);
 }
 
 

@@ -16,6 +16,10 @@ ASmallBuddhaAIController::ASmallBuddhaAIController()
 	SightConfiguration->DetectionByAffiliation.bDetectEnemies = true;
 	SightConfiguration->DetectionByAffiliation.bDetectFriendlies = true;
 	SightConfiguration->DetectionByAffiliation.bDetectNeutrals = true;
+
+	GetPerceptionComponent()->SetDominantSense(*SightConfiguration->GetSenseImplementation());
+	GetPerceptionComponent()->ConfigureSense(*SightConfiguration);
+	GetPerceptionComponent()->OnTargetPerceptionUpdated.AddDynamic(this, &ASmallBuddhaAIController::OnSensesUpdated);
 	
 	TargetPlayer = nullptr;
 }
@@ -23,10 +27,6 @@ ASmallBuddhaAIController::ASmallBuddhaAIController()
 void ASmallBuddhaAIController::BeginPlay()
 {
 	Super::BeginPlay();
-	GetPerceptionComponent()->SetDominantSense(*SightConfiguration->GetSenseImplementation());
-	GetPerceptionComponent()->ConfigureSense(*SightConfiguration);
-	GetPerceptionComponent()->OnTargetPerceptionUpdated.AddDynamic(this, &ASmallBuddhaAIController::OnSensesUpdated);
-
 	if(!AIBlackboard)
 	return;
 	if(!ensure(BehaviorTree))return;
@@ -45,7 +45,7 @@ void ASmallBuddhaAIController::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	if(TargetPlayer)
     {
-     BlackboardComponent->SetValueAsVector("PlayerPosition", TargetPlayer->GetActorLocation());
+		BlackboardComponent->SetValueAsVector("PlayerPosition", TargetPlayer->GetActorLocation());
     }
 }
 
@@ -90,6 +90,6 @@ void ASmallBuddhaAIController::GenerateNewRandomLocation()
 	{
 		FNavLocation ReturnLocation;
 		NavigationSystem->GetRandomPointInNavigableRadius(GetPawn()->GetActorLocation(), 2000,ReturnLocation);
-		MoveToLocation(ReturnLocation.Location);
+		BlackboardComponent->SetValueAsVector("PatrolPoint", ReturnLocation.Location);
 	}
 }
