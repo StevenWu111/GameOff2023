@@ -71,12 +71,12 @@ void ALaserBuddha::Tick(float DeltaTime)
 	World->DebugDrawTraceTag = TraceTag;
 	if (HitResult.GetActor() != nullptr)
 	{
-		const float ZScale = HitResult.Distance /100.0f;
-		LaserMeshComponent->SetWorldScale3D(FVector(InitiScale.X,InitiScale.Y,ZScale));
+		const float XScale = HitResult.Distance /20.0f;
+		LaserMeshComponent->SetWorldScale3D(FVector(XScale,InitiScale.Y,InitiScale.Z));
 	}
 	else
 	{
-		LaserMeshComponent->SetWorldScale3D(FVector(InitiScale.X,InitiScale.Y,Range));
+		LaserMeshComponent->SetWorldScale3D(FVector(Range,InitiScale.Y,InitiScale.Z));
 	}
 }
 
