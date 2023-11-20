@@ -36,7 +36,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Interact")
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = Interact)
 	void Interact();
 
 	FRotator TargetRotation;
