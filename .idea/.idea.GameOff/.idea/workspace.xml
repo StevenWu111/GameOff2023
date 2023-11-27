@@ -8,10 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d017f5aa-3e01-4e8f-b1ba-44044be20383" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Content/AI/BP_SmallSearchingBuddha.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AI/BP_SmallSearchingBuddha.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/BP_SmallSearchingBuddha.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/BP_SmallSearchingBuddha.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/LaserBuddha.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/LaserBuddha.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/2/9A/140K21CQPR2UHI9URYDV3W.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/6/JB/4859VAKZRUXOBA324UQ4QE.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/6/JB/4859VAKZRUXOBA324UQ4QE.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/9/PV/PB0YCXE43PHH2IJ5FK11Q0.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/9/PV/PB0YCXE43PHH2IJ5FK11Q0.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/A/FE/HJDG2TXQ4ZZ0XGMBMBSX5U.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/A/FE/HJDG2TXQ4ZZ0XGMBMBSX5U.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,6 +209,7 @@
       <workItem from="1700997206688" duration="2764000" />
       <workItem from="1701052627920" duration="15000" />
       <workItem from="1701052659605" duration="5974000" />
+      <workItem from="1701069182215" duration="681000" />
     </task>
     <servers />
   </component>
