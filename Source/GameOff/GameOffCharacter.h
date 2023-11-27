@@ -138,6 +138,8 @@ public:
 
 	UUserWidget* WidgetInstance;
 
+	float IniPushForce = 0;
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);

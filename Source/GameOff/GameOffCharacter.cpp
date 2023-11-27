@@ -11,6 +11,7 @@
 #include "Interactable.h"
 #include "Blueprint/UserWidget.h"
 #include "Engine/LocalPlayer.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -115,6 +116,7 @@ void AGameOffCharacter::BeginPlay()
 		}
 	}
 
+	IniPushForce = this->GetCharacterMovement()->PushForceFactor;
 }
 
 void AGameOffCharacter::Tick(float DeltaSeconds)
@@ -144,6 +146,7 @@ void AGameOffCharacter::ScaleSize(float DeltaTime)
 		{
 			NextScale = this->GetActorScale() - FVector3d(1.0f) * FVector3d(ScaleSpeed) * FVector3d(DeltaTime);
 			this->SetActorScale3D(NextScale);
+			this->GetCharacterMovement()->PushForceFactor = 1;
 		}
 		break;
 	case ScaleUp:
@@ -156,6 +159,7 @@ void AGameOffCharacter::ScaleSize(float DeltaTime)
 		{
 			NextScale = this->GetActorScale() + FVector3d(1.0f) * FVector3d(ScaleSpeed) * FVector3d(DeltaTime);
 			this->SetActorScale3D(NextScale);
+			this->GetCharacterMovement()->PushForceFactor = IniPushForce;
 		}
 		break;
 		default:
