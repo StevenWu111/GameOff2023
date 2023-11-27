@@ -1,10 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "CollectTargetObject.h"
+#include "TheFinalTable.h"
 
 // Sets default values
-ACollectTargetObject::ACollectTargetObject()
+ATheFinalTable::ATheFinalTable()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -16,14 +16,15 @@ ACollectTargetObject::ACollectTargetObject()
 }
 
 // Called when the game starts or when spawned
-void ACollectTargetObject::BeginPlay()
+void ATheFinalTable::BeginPlay()
 {
 	Super::BeginPlay();
-	BoxComponent->OnComponentBeginOverlap.AddDynamic(this,&ACollectTargetObject::CollectAreaOverlapBegin);
-	BoxComponent->OnComponentEndOverlap.AddDynamic(this,&ACollectTargetObject::CollectAreaOverlapOver);
+	BoxComponent->OnComponentBeginOverlap.AddDynamic(this,&ATheFinalTable::CollectAreaOverlapBegin);
+	BoxComponent->OnComponentEndOverlap.AddDynamic(this,&ATheFinalTable::CollectAreaOverlapOver);
+	
 }
 
-void ACollectTargetObject::CollectAreaOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+void ATheFinalTable::CollectAreaOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	Player = Cast<AGameOffCharacter>(OtherActor);
@@ -34,7 +35,7 @@ void ACollectTargetObject::CollectAreaOverlapBegin(UPrimitiveComponent* Overlapp
 	}
 }
 
-void ACollectTargetObject::CollectAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
+void ATheFinalTable::CollectAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	if (Player)
@@ -46,19 +47,14 @@ void ACollectTargetObject::CollectAreaOverlapOver(UPrimitiveComponent* Overlappe
 }
 
 // Called every frame
-void ACollectTargetObject::Tick(float DeltaTime)
+void ATheFinalTable::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
 
-void ACollectTargetObject::Interact_Implementation()
+void ATheFinalTable::Interact_Implementation()
 {
 	IInteractable::Interact_Implementation();
-	if (Player)
-	{
-		Player->CollectedObjectName.Add(this->ObjectName);
-	}
-	this->Destroy();
 }
 

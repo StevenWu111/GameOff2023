@@ -17,10 +17,12 @@ ALaserBuddha::ALaserBuddha()
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MainMestComponent"));
 	LaserMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("LaserMestComponent"));
+	SecLaserMeshComponent= CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SecondLaserMestComponent"));
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxCollider"));
 	MeshComponent->SetupAttachment(RootComponent);
 	BoxComponent->SetupAttachment(MeshComponent);
 	LaserMeshComponent->SetupAttachment(MeshComponent);
+	SecLaserMeshComponent->SetupAttachment(MeshComponent);
 }
 
 // Called when the game starts or when spawned
@@ -32,6 +34,7 @@ void ALaserBuddha::BeginPlay()
 	BoxComponent->OnComponentEndOverlap.AddDynamic(this,&ALaserBuddha::ALaserBuddha::RotateAreaOverlapOver);
 
 	LaserMeshComponent->OnComponentHit.AddDynamic(this,&ALaserBuddha::LaserHit);
+	SecLaserMeshComponent->OnComponentHit.AddDynamic(this,&ALaserBuddha::LaserHit);
 
 	for (auto RotationTemp:TargetRotationsTemp)
 	{

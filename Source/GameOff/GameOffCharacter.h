@@ -140,6 +140,8 @@ public:
 
 	float IniPushForce = 0;
 
+	TArray<FName> CollectedObjectName;
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);

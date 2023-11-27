@@ -3,20 +3,20 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameOffCharacter.h"
 #include "Interactable.h"
 #include "Components/BoxComponent.h"
+#include "GameOffCharacter.h"
 #include "GameFramework/Actor.h"
-#include "CollectTargetObject.generated.h"
+#include "TheFinalTable.generated.h"
 
 UCLASS()
-class GAMEOFF_API ACollectTargetObject : public AActor, public IInteractable
+class GAMEOFF_API ATheFinalTable : public AActor, public IInteractable
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	ACollectTargetObject();
+	ATheFinalTable();
 
 protected:
 	// Called when the game starts or when spawned
@@ -28,8 +28,6 @@ UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHi
 
 	UFUNCTION()
 	void  CollectAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
-
-
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -43,7 +41,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = Interact)
 	void Interact();
+	
 
-	UPROPERTY(EditAnywhere)
-	FName ObjectName;
 };

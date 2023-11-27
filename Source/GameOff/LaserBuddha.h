@@ -23,6 +23,8 @@ public:
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* LaserMeshComponent;
 	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* SecLaserMeshComponent;
+	UPROPERTY(EditAnywhere)
 	UBoxComponent* BoxComponent;
 
 	
