@@ -79,6 +79,7 @@ public:
 
 	FVector InitiScale;
 
+	UPROPERTY(EditAnywhere, Category = PushForce)
 	int PushBackForce = 3000;
 
 	

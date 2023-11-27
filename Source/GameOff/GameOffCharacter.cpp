@@ -135,7 +135,7 @@ void AGameOffCharacter::ScaleSize(float DeltaTime)
 	switch (CurrScaleStatus)
 	{
 	case ScaleDown:
-		if (abs(CurrentScale-ScaleDownSize) <= 0.02 )
+		if (CurrentScale <= ScaleDownSize )
 		{
 			this->SetActorScale3D(TargetScaleDownSize);
 			CurrScaleStatus = SmallScale;
@@ -147,7 +147,7 @@ void AGameOffCharacter::ScaleSize(float DeltaTime)
 		}
 		break;
 	case ScaleUp:
-		if (abs(CurrentScale-1.0f) <= 0.02)
+		if (CurrentScale >= 1.0f)
 		{
 			this->SetActorScale3D(TargetScaleUpSize);
 			CurrScaleStatus = BigScale;
