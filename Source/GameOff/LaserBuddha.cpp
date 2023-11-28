@@ -4,8 +4,6 @@
 #include "LaserBuddha.h"
 
 #include "GameOffCharacter.h"
-#include "KismetTraceUtils.h"
-#include "Blueprint/UserWidget.h"
 #include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
@@ -76,10 +74,12 @@ void ALaserBuddha::Tick(float DeltaTime)
 	{
 		const float XScale = HitResult.Distance /20.0f;
 		LaserMeshComponent->SetWorldScale3D(FVector(XScale,InitiScale.Y,InitiScale.Z));
+		SecLaserMeshComponent->SetWorldScale3D(FVector(XScale,InitiScale.Y,InitiScale.Z));
 	}
 	else
 	{
 		LaserMeshComponent->SetWorldScale3D(FVector(Range,InitiScale.Y,InitiScale.Z));
+		SecLaserMeshComponent->SetWorldScale3D(FVector(Range,InitiScale.Y,InitiScale.Z));
 	}
 }
 

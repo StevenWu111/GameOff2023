@@ -8,10 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d017f5aa-3e01-4e8f-b1ba-44044be20383" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/CollectTargetObject.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/CollectTargetObject.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/CollectTargetObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/CollectTargetObject.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprint/BP_LaserBuddha.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/BP_LaserBuddha.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Eiko/Material/M_Master_WorldPosition.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Eiko/Material/M_Master_WorldPosition.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/GameOff/LaserBuddha.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/LaserBuddha.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +210,7 @@
       <workItem from="1701069182215" duration="1280000" />
       <workItem from="1701076881397" duration="4342000" />
       <workItem from="1701098680955" duration="1973000" />
-      <workItem from="1701139942011" duration="7564000" />
+      <workItem from="1701139942011" duration="7759000" />
     </task>
     <servers />
   </component>
