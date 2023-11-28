@@ -54,8 +54,8 @@ void APlacingTable::InteractAreaOverlapOver(UPrimitiveComponent* OverlappedComp,
 {
 	if (Player)
 	{
-		Player->InteractableActor = nullptr;
 		Player->RemoveInteractUI();
+		Player->InteractableActor = nullptr;
 		Player = nullptr;
 	}
 }

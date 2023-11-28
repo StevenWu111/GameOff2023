@@ -97,7 +97,7 @@ void AGameOffCharacter::RemoveInteractUI()
 	if (WidgetInstance)
 	{
 		WidgetInstance->RemoveFromParent();
-		WidgetInstance->Destruct();
+		//WidgetInstance->Destruct();
 		WidgetInstance = nullptr;
 	}
 }
