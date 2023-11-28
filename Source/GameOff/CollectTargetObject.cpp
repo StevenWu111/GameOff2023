@@ -57,7 +57,7 @@ void ACollectTargetObject::Interact_Implementation()
 	IInteractable::Interact_Implementation();
 	if (Player)
 	{
-		Player->CollectedObjectName.Add(this->ObjectName);
+		Player->CollectedObjects.Add(this->ObjectType);
 	}
 	this->Destroy();
 }

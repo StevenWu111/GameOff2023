@@ -14,7 +14,15 @@ enum EScaleStatus
 	ScaleUp,
 	ScaleDown,
 	SmallScale,
-	BigScale
+	BigScale,
+};
+
+UENUM(BlueprintType)
+enum class ECollectObjectType:uint8
+{
+	ECOT_First UMETA(DisplayName="FirstObject"),
+	ECOT_Second UMETA(DisplayName="SecondObject"),
+	ECOT_Third UMETA(DisplayName="ThirdObject"),
 };
 class UInputComponent;
 class USkeletalMeshComponent;
@@ -140,7 +148,7 @@ public:
 
 	float IniPushForce = 0;
 
-	TArray<FName> CollectedObjectName;
+	TArray<ECollectObjectType> CollectedObjects;
 
 protected:
 	/** Called for movement input */
