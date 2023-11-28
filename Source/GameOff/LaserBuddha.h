@@ -80,9 +80,12 @@ public:
 	const FName TraceTag = "MyTraceTag";
 
 	FVector InitiScale;
+	FVector CollisionInitiScale;
 
 	UPROPERTY(EditAnywhere, Category = PushForce)
 	int PushBackForce = 3000;
+
+	FVector TempLocation;
 
 	
 

@@ -31,7 +31,6 @@ void ALaserBuddha::BeginPlay()
 	BoxComponent->OnComponentBeginOverlap.AddDynamic(this,&ALaserBuddha::RotateAreaOverlapBegin);
 	BoxComponent->OnComponentEndOverlap.AddDynamic(this,&ALaserBuddha::ALaserBuddha::RotateAreaOverlapOver);
 
-	LaserMeshComponent->OnComponentHit.AddDynamic(this,&ALaserBuddha::LaserHit);
 	SecLaserMeshComponent->OnComponentHit.AddDynamic(this,&ALaserBuddha::LaserHit);
 
 	for (auto RotationTemp:TargetRotationsTemp)
@@ -51,6 +50,7 @@ void ALaserBuddha::BeginPlay()
 	TraceParams.TraceTag = TraceTag;
 
 	InitiScale = LaserMeshComponent->GetComponentScale();
+	CollisionInitiScale = SecLaserMeshComponent->GetComponentScale();
 
 }
 
@@ -74,12 +74,12 @@ void ALaserBuddha::Tick(float DeltaTime)
 	{
 		const float XScale = HitResult.Distance /20.0f;
 		LaserMeshComponent->SetWorldScale3D(FVector(XScale,InitiScale.Y,InitiScale.Z));
-		SecLaserMeshComponent->SetWorldScale3D(FVector(XScale,InitiScale.Y,InitiScale.Z));
+		SecLaserMeshComponent->SetWorldScale3D(FVector(CollisionInitiScale.X,CollisionInitiScale.Y,XScale/5));
 	}
 	else
 	{
 		LaserMeshComponent->SetWorldScale3D(FVector(Range,InitiScale.Y,InitiScale.Z));
-		SecLaserMeshComponent->SetWorldScale3D(FVector(Range,InitiScale.Y,InitiScale.Z));
+		SecLaserMeshComponent->SetWorldScale3D(FVector(CollisionInitiScale.X,CollisionInitiScale.Y,Range));
 	}
 }
 
@@ -121,6 +121,7 @@ void ALaserBuddha::LaserHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UP
 		FVector Direction = OverlapPlayer->GetActorLocation() - CollisionLocation;
 		Direction.Normalize();
 		Direction = Direction*PushBackForce;
+		TempLocation = OverlapPlayer->GetActorLocation();
 		OverlapPlayer->LaunchCharacter(Direction, true, true);
 	}
 }
