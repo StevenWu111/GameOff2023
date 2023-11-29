@@ -21,6 +21,18 @@ void ABellPlayer::PlaySound()
 	if (CurrGameState)
 	{
 		GetWorld()->GetTimerManager().SetTimer(LoopingSoundTimerHandle,this,&ABellPlayer::LoopingSound, 3.0f, true, 0.0f);
+		if (CurrIndex > SearchingBuddhaSpawnTime.Num()-1)
+		{
+			return;
+		}
+		if (CurrGameState->Minutes == SearchingBuddhaSpawnTime[CurrIndex])
+		{
+			CurrIndex++;
+			const int32 RandIndex = FMath::RandRange(0,SmallBuddhas.Num()-1);
+			SmallBuddhas[RandIndex]->SpawnDefaultController();
+			SmallBuddhas[RandIndex]->AudioComponent->Play();
+			SmallBuddhas.RemoveAt(RandIndex);
+		}
 	}
 }
 

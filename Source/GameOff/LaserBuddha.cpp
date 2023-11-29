@@ -121,7 +121,6 @@ void ALaserBuddha::LaserHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UP
 		FVector Direction = OverlapPlayer->GetActorLocation() - CollisionLocation;
 		Direction.Normalize();
 		Direction = Direction*PushBackForce;
-		TempLocation = OverlapPlayer->GetActorLocation();
 		OverlapPlayer->LaunchCharacter(Direction, true, true);
 	}
 }

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "FirstLevelGameStateBase.h"
+#include "SmallSearchingBuddha.h"
 #include "Components/AudioComponent.h"
 #include "GameFramework/Actor.h"
 #include "BellPlayer.generated.h"
@@ -34,6 +35,15 @@ public:
 	FTimerHandle LoopingSoundTimerHandle;
 
 	AFirstLevelGameStateBase* CurrGameState;
+
+	UPROPERTY(EditAnywhere, Category = SmallBuddha)
+	TArray<ASmallSearchingBuddha*> SmallBuddhas;
+
+	UPROPERTY(EditAnywhere, Category = SmallBuddha)
+	TArray<int32> SearchingBuddhaSpawnTime;
+
+	int32 CurrIndex = 0;
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
