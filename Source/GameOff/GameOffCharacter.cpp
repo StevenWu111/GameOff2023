@@ -46,7 +46,7 @@ AGameOffCharacter::AGameOffCharacter()
 
 	CrouchEyeOffset = FVector(0.0f);
 	CrouchSpeed = 12.0f;
-
+	
 }
 
 void AGameOffCharacter::OnStartCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust)

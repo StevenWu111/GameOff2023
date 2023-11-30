@@ -7,52 +7,49 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c01462fa-f4c5-4b7d-a58e-c308ae9d646f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/BP_BuddhaHand.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/BP_BuddhaHand.uasset" afterDir="false" />
+    <list default="true" id="c894645d-3235-4278-9f58-b58f87a65401" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprint/BP_HidingZone.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/BP_HidingZone.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprint/BP_LaserBuddha.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/BP_LaserBuddha.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_FirstPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_FirstPersonCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FirstPerson/Maps/Test.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FirstPerson/Maps/Test.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/StarterContent/Particles/Materials/M_Fire_SubUV.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Particles/Materials/M_Fire_SubUV.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/StarterContent/Particles/Materials/M_smoke_subUV.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Particles/Materials/M_smoke_subUV.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/VFX/NS_Hand.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/NS_Hand.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/5/8H/A7E8KV4IOVWJ4BMEHNJUDG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/5/8H/A7E8KV4IOVWJ4BMEHNJUDG.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/6/NW/SRTX1BMAFHOTWTIAF4U45F.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/HidingZone.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/HidingZone.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Source/GameOff/GameOffCharacter.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/GameOff/GameOffCharacter.h" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectId" id="2YoJREF0o61PaWRv6MpjCBEsZ1m" />
+  <component name="ProjectId" id="2YtugRHz8riGnBvfulT4NqjgDnU" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.32552084&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\AUFB\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\AUFB\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\AUFB\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\AUFB\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\AUFB\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\AUFB\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C++ Project.GameOff">
     <configuration name="GameOff" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -206,17 +203,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c01462fa-f4c5-4b7d-a58e-c308ae9d646f" name="Changes" comment="" />
-      <created>1701185989855</created>
+      <changelist id="c894645d-3235-4278-9f58-b58f87a65401" name="Changes" comment="" />
+      <created>1701357309165</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1701185989855</updated>
-      <workItem from="1701185993300" duration="141000" />
-      <workItem from="1701232833996" duration="4062000" />
-      <workItem from="1701236981975" duration="88000" />
-      <workItem from="1701237175179" duration="10425000" />
-      <workItem from="1701325086706" duration="3288000" />
-      <workItem from="1701335715951" duration="2463000" />
+      <updated>1701357309165</updated>
+      <workItem from="1701357312873" duration="3049000" />
     </task>
     <servers />
   </component>

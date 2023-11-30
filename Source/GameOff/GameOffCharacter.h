@@ -152,6 +152,7 @@ public:
 
 	TArray<ECollectObjectType> CollectedObjects;
 
+	UPROPERTY(BlueprintReadWrite)
 	bool bIsInTheCrouchHidingZone = false;
 
 protected:
