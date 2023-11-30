@@ -152,6 +152,8 @@ public:
 
 	TArray<ECollectObjectType> CollectedObjects;
 
+	bool bIsInTheCrouchHidingZone = false;
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);

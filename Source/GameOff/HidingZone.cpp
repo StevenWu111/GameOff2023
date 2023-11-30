@@ -36,10 +36,12 @@ void AHidingZone::SafeAreaOverlapBegin(UPrimitiveComponent* OverlappedComponent,
 			{
 				Player->bIsHiding = true;
 			}
+			Player->bIsInTheCrouchHidingZone = true;
 		}
 		else
 		{
 			Player->bIsHiding = true;
+			Player->bIsInTheCrouchHidingZone = false;
 		}
 	}
 }
@@ -51,6 +53,10 @@ void AHidingZone::SafeAreaOverlapOver(UPrimitiveComponent* OverlappedComp, AActo
 	{
 		Player->bIsHiding = false;
 		CharacterRef = nullptr;
+		if (Player->HidingZoneCount <= 0)
+		{
+			Player->bIsInTheCrouchHidingZone = false;
+		}
 	}
 }
 
