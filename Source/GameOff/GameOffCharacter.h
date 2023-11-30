@@ -84,7 +84,9 @@ public:
 
 	void CalcCamera(float DeltaTime, FMinimalViewInfo& OutResult) override;
 
+	UFUNCTION(BlueprintCallable, Category = UI)
 	void AddInteractUI();
+	UFUNCTION(BlueprintCallable, Category = UI)
 	void RemoveInteractUI();
 	
 

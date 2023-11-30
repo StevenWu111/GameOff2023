@@ -18,9 +18,9 @@ ALaserBuddha::ALaserBuddha()
 	SecLaserMeshComponent= CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SecondLaserMestComponent"));
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxCollider"));
 	MeshComponent->SetupAttachment(RootComponent);
-	BoxComponent->SetupAttachment(MeshComponent);
-	LaserMeshComponent->SetupAttachment(MeshComponent);
-	SecLaserMeshComponent->SetupAttachment(MeshComponent);
+	BoxComponent->SetupAttachment(RootComponent);
+	LaserMeshComponent->SetupAttachment(RootComponent);
+	SecLaserMeshComponent->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
