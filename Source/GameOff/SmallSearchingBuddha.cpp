@@ -62,6 +62,8 @@ void ASmallSearchingBuddha::ActorOverlapBegin(UPrimitiveComponent* OverlappedCom
 				ControllerTemp->Destroy();
 				this->UnPossessed();
 			}
+			Cast<AGameOffCharacter>(OtherActor)->UpdateHealth(-Damage);
+			Cast<AGameOffCharacter>(OtherActor)->AddDamageUI();
 		}
 	}
 }

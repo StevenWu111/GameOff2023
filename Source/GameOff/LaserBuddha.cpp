@@ -122,6 +122,8 @@ void ALaserBuddha::LaserHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UP
 		Direction.Normalize();
 		Direction = Direction*PushBackForce;
 		OverlapPlayer->LaunchCharacter(Direction, true, true);
+		OverlapPlayer->UpdateHealth(-Damage);
+		OverlapPlayer->AddDamageUI();
 	}
 }
 

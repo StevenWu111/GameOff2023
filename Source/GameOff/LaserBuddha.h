@@ -85,7 +85,8 @@ public:
 	UPROPERTY(EditAnywhere, Category = PushForce)
 	int PushBackForce = 3000;
 
-	
+	UPROPERTY(EditAnywhere)
+	float Damage = 50;
 
 };
 

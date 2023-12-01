@@ -40,6 +40,8 @@ public:
 	UPROPERTY(EditAnywhere)
 	float Speed = 10;
 
+	UPROPERTY(EditAnywhere)
+	float Damage = 50;
 	
 };
 

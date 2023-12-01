@@ -202,6 +202,26 @@ void AGameOffCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 }
 
 
+void AGameOffCharacter::UpdateHealth(float Amount)
+{
+	HP += Amount;
+	if (HP <= 0)
+	{
+		GetWorld()->GetFirstPlayerController()->SetPause(true);
+	}
+}
+
+void AGameOffCharacter::AddDamageUI()
+{
+	if (DamageUI)
+	{
+		if (UUserWidget* UIInstance = CreateWidget(GetWorld(), DamageUI))
+		{
+			UIInstance->AddToViewport();
+		}
+	}
+}
+
 /*
  * The functions that will be called when player input something
  */

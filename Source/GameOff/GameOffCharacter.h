@@ -146,6 +146,9 @@ public:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UUserWidget> PressEUI;
 
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UUserWidget> DamageUI;
+
 	UUserWidget* WidgetInstance;
 
 	float IniPushForce = 0;
@@ -154,6 +157,12 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	bool bIsInTheCrouchHidingZone = false;
+	
+	void UpdateHealth(float Amount);
+
+	void AddDamageUI();
+
+
 
 protected:
 	/** Called for movement input */
@@ -171,6 +180,9 @@ protected:
 	void StartSwitchSize(const FInputActionValue& Value);
 
 	void ScaleSize(float DeltaTime);
+
+	UPROPERTY(EditAnywhere)
+	float HP = 100;
 
 protected:
 	// APawn interface

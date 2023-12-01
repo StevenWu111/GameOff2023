@@ -3,6 +3,8 @@
 
 #include "BuddhaHand.h"
 
+#include "GameOffCharacter.h"
+
 // Sets default values
 ABuddhaHand::ABuddhaHand()
 {
@@ -19,6 +21,7 @@ ABuddhaHand::ABuddhaHand()
 void ABuddhaHand::BeginPlay()
 {
 	Super::BeginPlay();
+	BoxComponent->OnComponentBeginOverlap.AddDynamic(this, &ABuddhaHand::DetectorOverlapBegin);
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &ABuddhaHand::SelfDestroy, 5.0f, false, 5.0f);
 	
 }
@@ -41,6 +44,11 @@ void ABuddhaHand::SelfDestroy()
 void ABuddhaHand::DetectorOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	if (AGameOffCharacter* OverlapPlayer = Cast<AGameOffCharacter>(OtherActor))
+	{
+		OverlapPlayer->UpdateHealth(-Damage);
+		OverlapPlayer->AddDamageUI();
+	}
 	
 }
 
