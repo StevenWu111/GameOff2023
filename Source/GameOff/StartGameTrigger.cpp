@@ -36,11 +36,12 @@ void AStartGameTrigger::Tick(float DeltaTime)
 void AStartGameTrigger::CollectAreaOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (AGameOffCharacter* Player = Cast<AGameOffCharacter>(OtherActor))
+	if (Cast<AGameOffCharacter>(OtherActor))
 	{
 		if (AGameOffGameMode* CurrGameMode = Cast<AGameOffGameMode>(GetWorld()->GetAuthGameMode()))
 		{
 			CurrGameMode->StartGameDelegate.Broadcast();
+			this->Destroy();
 		}
 	}
 }

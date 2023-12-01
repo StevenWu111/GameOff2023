@@ -45,6 +45,7 @@ public:
 
 	int32 CurrIndex = 0;
 
+	UFUNCTION()
 	void GameStartTrigger();
 	
 
