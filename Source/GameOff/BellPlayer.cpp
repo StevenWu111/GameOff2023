@@ -3,6 +3,8 @@
 
 #include "BellPlayer.h"
 
+#include "GameOffGameMode.h"
+
 // Sets default values
 ABellPlayer::ABellPlayer()
 {
@@ -56,13 +58,21 @@ void ABellPlayer::LoopingSound()
 	
 }
 
+void ABellPlayer::GameStartTrigger()
+{
+	GetWorld()->GetTimerManager().SetTimer(StartSoundTimerHandle,this,&ABellPlayer::PlaySound, TriggerTimeInSeconds, true, TriggerTimeInSeconds);
+}
+
 // Called when the game starts or when spawned
 void ABellPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 	AudioComp->Stop();
 	CurrGameState = Cast<AFirstLevelGameStateBase>(GetWorld()->GetGameState());
-	GetWorld()->GetTimerManager().SetTimer(StartSoundTimerHandle,this,&ABellPlayer::PlaySound, TriggerTimeInSeconds, true, TriggerTimeInSeconds);
+	if (AGameOffGameMode* CurrGameMode = Cast<AGameOffGameMode>(GetWorld()->GetAuthGameMode()))
+	{
+		CurrGameMode->StartGameDelegate.AddDynamic(this, &ABellPlayer::GameStartTrigger);
+	}
 	
 }
 
