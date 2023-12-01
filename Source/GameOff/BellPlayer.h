@@ -24,8 +24,9 @@ public:
 	UPROPERTY(EditAnywhere)
 	float TriggerTimeInSeconds = 60.5f;
 
-	int32 PlayedNumTemp = 0;
-	
+	int32 PlayedNumTemp = 1;
+
+	int32 CurrPlayNum = 0;
 	void PlaySound();
 
 	void LoopingSound();
@@ -43,6 +44,8 @@ public:
 	TArray<int32> SearchingBuddhaSpawnTime;
 
 	int32 CurrIndex = 0;
+
+	
 	
 protected:
 	// Called when the game starts or when spawned

@@ -38,16 +38,20 @@ void ABellPlayer::PlaySound()
 
 void ABellPlayer::LoopingSound()
 {
-	const int32 BellNum = CurrGameState->Minutes;
-	if (PlayedNumTemp < BellNum)
+	if (CurrPlayNum < PlayedNumTemp)
 	{
 		AudioComp->Play();
-		PlayedNumTemp++;
+		CurrPlayNum++;
 	}
 	else
 	{
 		GetWorld()->GetTimerManager().ClearTimer(LoopingSoundTimerHandle);
-		PlayedNumTemp = 0;
+		PlayedNumTemp++;
+		CurrPlayNum = 0;
+		if (PlayedNumTemp == 13)
+		{
+			this->Destroy();
+		}
 	}
 	
 }
