@@ -25,7 +25,7 @@ void ABellPlayer::PlaySound()
 		{
 			return;
 		}
-		if (CurrGameState->Minutes == SearchingBuddhaSpawnTime[CurrIndex])
+		if (PlayedNumTemp == SearchingBuddhaSpawnTime[CurrIndex])
 		{
 			CurrIndex++;
 			const int32 RandIndex = FMath::RandRange(0,SmallBuddhas.Num()-1);

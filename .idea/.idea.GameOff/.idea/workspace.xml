@@ -7,20 +7,7 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c894645d-3235-4278-9f58-b58f87a65401" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_FirstPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FirstPerson/Blueprints/BP_FirstPersonCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/4/PT/ZXUQMNLL9GZ2UNQ5D0R4A4.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/4/PT/ZXUQMNLL9GZ2UNQ5D0R4A4.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/7/2R/Y9ZE4Y9O6U9ACBTGLUB8QC.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/7/2R/Y9ZE4Y9O6U9ACBTGLUB8QC.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/BuddhaHand.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/BuddhaHand.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/BuddhaHand.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/BuddhaHand.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GameOffCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/LaserBuddha.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/LaserBuddha.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/LaserBuddha.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/LaserBuddha.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/SmallSearchingBuddha.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/SmallSearchingBuddha.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/GameOff/SmallSearchingBuddha.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/SmallSearchingBuddha.h" afterDir="false" />
-    </list>
+    <list default="true" id="c894645d-3235-4278-9f58-b58f87a65401" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,7 +195,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701357309165</updated>
       <workItem from="1701357312873" duration="3049000" />
-      <workItem from="1701402250357" duration="9869000" />
+      <workItem from="1701402250357" duration="12862000" />
     </task>
     <servers />
   </component>
