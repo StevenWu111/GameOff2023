@@ -25,16 +25,13 @@ void ABellPlayer::PlaySound()
 		{
 			return;
 		}
-		if (PlayedNumTemp == SearchingBuddhaSpawnTime[CurrIndex] && !SmallBuddhas.IsEmpty())
+		if (PlayedNumTemp == SearchingBuddhaSpawnTime[CurrIndex])
 		{
 			CurrIndex++;
 			const int32 RandIndex = FMath::RandRange(0,SmallBuddhas.Num()-1);
-			if (SmallBuddhas[RandIndex])
-			{
-				SmallBuddhas[RandIndex]->SpawnDefaultController();
-				SmallBuddhas[RandIndex]->AudioComponent->Play();
-				SmallBuddhas.RemoveAt(RandIndex);
-			}
+			SmallBuddhas[RandIndex]->SpawnDefaultController();
+			SmallBuddhas[RandIndex]->AudioComponent->Play();
+			SmallBuddhas.RemoveAt(RandIndex);
 		}
 	}
 }
