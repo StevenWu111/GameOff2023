@@ -181,8 +181,9 @@ protected:
 
 	void ScaleSize(float DeltaTime);
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float HP = 100;
+
 
 protected:
 	// APawn interface
