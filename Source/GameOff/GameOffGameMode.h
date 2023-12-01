@@ -6,6 +6,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "GameOffGameMode.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FGameStart);
+
 UCLASS(minimalapi)
 class AGameOffGameMode : public AGameModeBase
 {
@@ -13,6 +15,8 @@ class AGameOffGameMode : public AGameModeBase
 
 public:
 	AGameOffGameMode();
+
+	FGameStart StartGameDelegate;
 };
 
 

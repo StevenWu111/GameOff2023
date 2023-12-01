@@ -7,7 +7,14 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c894645d-3235-4278-9f58-b58f87a65401" name="Changes" comment="" />
+    <list default="true" id="c894645d-3235-4278-9f58-b58f87a65401" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameOff/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/GameOff/BellPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/BellPlayer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/GameOff/BellPlayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/BellPlayer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/GameOff/GameOffGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/GameOffGameMode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/GameOff/StartGameTrigger.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/StartGameTrigger.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/GameOff/StartGameTrigger.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/GameOff/StartGameTrigger.h" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -196,7 +203,7 @@
       <updated>1701357309165</updated>
       <workItem from="1701357312873" duration="3049000" />
       <workItem from="1701402250357" duration="13377000" />
-      <workItem from="1701447223982" duration="582000" />
+      <workItem from="1701447223982" duration="2985000" />
     </task>
     <servers />
   </component>

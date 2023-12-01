@@ -3,8 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components//BoxComponent.h"
 #include "GameFramework/Actor.h"
 #include "StartGameTrigger.generated.h"
+
+
 
 UCLASS()
 class GAMEOFF_API AStartGameTrigger : public AActor
@@ -23,4 +26,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION()
+	void CollectAreaOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	
+	UPROPERTY(EditAnywhere)
+	UBoxComponent* BoxComponent;
 };
+
+
+
