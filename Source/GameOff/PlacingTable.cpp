@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
+#include "Blueprint/UserWidget.h"
 #include "PlacingTable.h"
 
 // Sets default values
@@ -94,6 +95,14 @@ void APlacingTable::Interact_Implementation()
 			}
 		}
 		GetWorld()->GetFirstPlayerController()->SetPause(true);
+		if (EndGameUIClass)
+		{
+			if (UUserWidget* UITemp = CreateWidget(GetWorld(),EndGameUIClass))
+			{
+				UITemp->AddToViewport();
+				GetWorld()->GetFirstPlayerController()->SetShowMouseCursor(true);
+			}
+		}
 		
 	}
 }

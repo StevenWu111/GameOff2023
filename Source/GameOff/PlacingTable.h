@@ -45,6 +45,9 @@ public:
 	UPROPERTY(EditAnywhere)
 	UBoxComponent* BoxComponent;
 
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UUserWidget> EndGameUIClass;
+
 	AGameOffCharacter* Player;
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = Interact)
