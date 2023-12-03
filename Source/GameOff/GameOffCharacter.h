@@ -121,6 +121,7 @@ public:
 	bool bIsCrouch = false;
 
 	/*Is hiding or not*/
+	UPROPERTY(BlueprintReadWrite)
 	bool bIsHiding = false;
 
 	/*Use this to track how many hiding zone that we are overlap with, avoid multiple timeline called when we overlap with multiple zone*/
